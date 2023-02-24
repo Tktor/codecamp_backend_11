@@ -2,7 +2,12 @@
 const getUser = () => {
   // 받은 데이터로 createUserDiv함수를 이용해
   // 목록 화면을 완성해주세요.
-  createUserDiv()
+
+  axios.get('http://localhost:3000/users').then((res) => {
+    for(let i = 0; i < res.data.length; i++) {
+      createUserDiv({email: res.data[i].email, personal: res.data[i].personal, phone: res.data[i].phone, prefer: res.data[i].prefer})
+    }
+    })
 }
 
 const createUserDiv = (data) => {
