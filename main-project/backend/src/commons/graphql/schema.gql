@@ -5,6 +5,7 @@
 type User {
   id: String!
   name: String!
+  phone: String!
   email: String!
   pay: Int!
 }
@@ -94,12 +95,14 @@ type Mutation {
 
 input CreateUserInput {
   name: String!
+  phone: String!
   email: String!
   password: String!
 }
 
 input UpdateUserInput {
   name: String
+  phone: String
   email: String
   password: String
 }

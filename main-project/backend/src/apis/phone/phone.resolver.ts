@@ -10,7 +10,7 @@ export class PhoneResolver {
     private readonly usersService: UsersService,
   ) {}
 
-  @Mutation()
+  @Mutation(() => String)
   sendTokenPhone(@Args('phone') phone: string) {
     // 핸드폰 번호 자릿수 검증
     this.phoneService.checkPhoneNumber({ phone });
@@ -20,5 +20,6 @@ export class PhoneResolver {
 
     // 토큰 전송
     const sendToken = this.phoneService.sendToken({ phone, Token });
+    return `${sendToken}`;
   }
 }
