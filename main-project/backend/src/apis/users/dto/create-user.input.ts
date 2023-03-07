@@ -14,5 +14,8 @@ export class CreateUserInput extends OmitType(
   email: string;
 
   @Field(() => String)
+  phone: string;
+
+  @Field(() => String)
   password: string;
 }

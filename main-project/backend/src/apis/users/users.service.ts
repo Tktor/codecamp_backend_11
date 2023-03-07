@@ -32,13 +32,14 @@ export class UsersService {
   }
 
   async create({ ...createUserInput }: IUsersServiceCreate): Promise<User> {
-    const { name, email, password } = createUserInput;
+    const { name, email, phone, password } = createUserInput;
     const user = await this.findOneByEmail({ email });
     if (user) throw new ConflictException('이미 등록된 이메일입니다.');
     const hashedPassword = await bcrypt.hash(password, 10);
     const result = this.userRepository.save({
       name,
       email,
+      phone,
       password: hashedPassword,
     });
     console.log(result);

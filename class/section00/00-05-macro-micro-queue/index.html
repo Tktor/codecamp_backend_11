@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>이벤트 루프</title>
+  <script>
+    const onclickLoop = () => {
+      console.log("시작!!!")
+
+      // 비동기 작업(매크로큐에 들어감(콜백함수가))
+      setTimeout(() => {
+
+        new Promise((resolve) => resolve("철수")).then(() => {
+          console.log("저는 Promise(setTimeout 안에서 실행될 거에요!!!)");
+        })
+
+        console.log("저는 setTimeout!! 매크로큐!! 0초 뒤에 실행될 거에요!!!");
+      }, 0);
+
+      // 비동기 작업(마이크로큐에 들어감 => then 안의 콜백함수가 들어감)
+      new Promise((resolve) => resolve("철수")).then(() => {
+        console.log("저는 Promise(1)!! 마이크로큐!! 0초 뒤에 실행될 거에요!");
+      })
+
+      // 비동기 작업(매크로큐에 들어감(콜백함수가))
+      setInterval(() => {
+        console.log("저는 setInterval!! 매크로큐!! 0초마다 실행될 거에요!!!");
+      }, 0)
+
+      // 오래걸리는 계산 알고리즘 예시
+      let sum = 0;
+      for(let i = 0; i <= 9000000000; i++) {
+        sum += i
+      }
+
+      // 비동기 작업(마이크로큐에 들어감 => then 안의 콜백함수가 들어감)
+      new Promise((resolve) => resolve("영희")).then(() => {
+        console.log("저는 Promise(2)!! 마이크로큐!! 0초 뒤에 실행될 거에요!");
+      })
+
+      console.log("끝!!!")
+    }
+  </script>
+</head>
+<body>
+  <button onclick="onclickLoop()">시작하기</button>
+</body>
+</html>

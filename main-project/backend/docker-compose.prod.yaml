@@ -1,0 +1,34 @@
+version: '3.7'
+
+# 컴퓨터들
+services:
+  #  컴퓨터 이름
+  my-backend:
+    image: asia.gcr.io/still-primer-377405/khj-project-nestjs2:0.8
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    # volumes:
+    #   - ./src:/myfolder/src
+    # ports:
+    #   - 3000:3000
+    # env_file:
+    #   - ./.env.prod
+    # environment:
+    #   - TZ='Asia/Seoul'
+
+  #  컴퓨터 이름
+  # my_database:
+  #   # platform: linux/86_64
+  #   image: mysql:latest
+  #   environment:
+  #     MYSQL_DATABASE: 'myprod'
+  #     MYSQL_ROOT_PASSWORD: 'root'
+  #   ports:
+  #     - 3306:3306
+
+  # my-redis:
+  #   image: redis:latest
+  #   ports:
+  #     - 6379:6379  

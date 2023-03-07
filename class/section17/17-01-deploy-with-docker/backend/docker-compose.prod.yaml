@@ -5,6 +5,8 @@ services:
 
   #  컴퓨터 이름
   my-backend:
+    image: asia.gcr.io/still-primer-377405/my-backend:1.1
+    # platform: linux/86_84
     build: 
       context: .
       dockerfile: Dockerfile

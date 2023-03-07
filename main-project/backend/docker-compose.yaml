@@ -16,17 +16,17 @@ services:
     environment:
       - TZ='Asia/Seoul'
 
-  #  컴퓨터 이름
-  my_database:
-    # platform: linux/86_84
-    image: mysql:latest
-    environment:
-      MYSQL_DATABASE: 'mydocker'
-      MYSQL_ROOT_PASSWORD: 'skdlfm12@'
-    ports:
-      - 3306:3306
+  # #  컴퓨터 이름
+  # my_database:
+  #   # platform: linux/86_84
+  #   image: mysql:latest
+  #   environment:
+  #     MYSQL_DATABASE: 'mydocker'
+  #     MYSQL_ROOT_PASSWORD: 'skdlfm12@'
+  #   ports:
+  #     - 3306:3306
 
-  my-redis:
-    image: redis:latest
-    ports:
-      - 6379:6379  
+  # my-redis:
+  #   image: redis:latest
+  #   ports:
+  #     - 6379:6379  

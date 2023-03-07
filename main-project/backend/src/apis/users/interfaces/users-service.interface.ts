@@ -5,6 +5,7 @@ export interface IUsersServiceCreate {
   // createUserInput: CreateUserInput;
   name: string;
   email: string;
+  phone: string;
   password: string;
 }
 

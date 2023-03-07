@@ -1,0 +1,32 @@
+# 1단계 => docker-compose -f docker-compose.prod.yaml build
+
+# 2단계 => docker-compose -f docker-compose.prod.yaml push
+
+# 3단계 => kubectl set image deployment/khj-project-nestjs2 khj-project-nestjs2-sha256-1=asia.gcr.io/still-primer-377405/khj-project-nestjs2:0.8
+
+steps: 
+  # 1단계 => docker-compose -f docker-compose.prod.yaml build
+  - name: docker/compose:1.29.0
+    args:
+      - -f
+      - main-project/backend/docker-compose.prod.yaml
+      - build
+
+  # 2단계 => docker-compose -f docker-compose.prod.yaml push
+  - name: docker/compose:1.29.0
+    args:
+      - -f
+      - main-project/backend/docker-compose.prod.yaml
+      - push
+
+  # 3단계 => kubectl set image deployment/khj-project-nestjs2 khj-project-nestjs2-sha256-1=asia.gcr.io/still-primer-377405/khj-project-nestjs2:0.8
+  - name: gcr.io/cloud-builders/kubectl
+    args:
+      - set
+      - image
+      - deployment/khj-project-nestjs2
+      - khj-project-nestjs2-sha256-1=asia.gcr.io/still-primer-377405/khj-project-nestjs2:0.8
+    env: 
+      - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
+      - CLOUDSDK_CONTAINER_CLUSTER=autopilot-cluster-2  
+

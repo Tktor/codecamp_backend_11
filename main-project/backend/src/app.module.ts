@@ -15,10 +15,13 @@ import { ImageModule } from './apis/images/images.module';
 import { FilesModule } from './apis/files/files.module';
 import { RedisClientOptions } from 'redis';
 import * as redisStore from 'cache-manager-redis-store';
+import { AppController } from './app.controller';
+import { BoardsModule } from './apis/boards/boards.module';
 
 @Module({
   imports: [
     AuthModule,
+    BoardsModule,
     FilesModule,
     ImageModule,
     PaymentsModule,
@@ -45,9 +48,12 @@ import * as redisStore from 'cache-manager-redis-store';
     }),
     CacheModule.register({
       store: redisStore,
-      url: 'redis://my-redis:6379',
+      url: 'redis://192.168.65.3:6379',
       isGlobal: true,
     }),
+  ],
+  controllers: [
+    AppController, //
   ],
 })
 export class AppModule {}
