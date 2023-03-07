@@ -4,7 +4,7 @@ version: '3.7'
 services:
   #  컴퓨터 이름
   my-backend:
-    image: asia.gcr.io/still-primer-377405/khj-project-nestjs2:0.8
+    image: asia.gcr.io/still-primer-377405/khj-project-nestjs2:0.9
     platform: linux/x86_64
     build:
       context: .
